@@ -28,13 +28,19 @@ class Budget:
         balanced_list = ["food", "entertainment", "clothing"]
         default_price = [0, 0, 0]
         selected_balanced_list = input("Select a Category? \n ")
-        input_price = int(input("what is your Balance? \n"))
+        amount = default_price[balanced_list.index(selected_balanced_list)]
+
+    def transfer(self, amount, other_instances):
+        balanced_list = ["food", "entertainment", "clothing"]
+        default_price = [0, 0, 0]
+        selected_balanced_list = input("Select a Category? \n ")
+        input_price = int(input("Deposit Amount? \n"))
         amount = default_price[balanced_list.index(selected_balanced_list)] + input_price
-        return amount
-
-
-    def transfer(self):
-        pass
+        if self.check_balance >= amount:
+            other_instances.balance += amount
+            self.check_balance -= amount
+        else:
+            print("checking balance Unsuccessful")
 
 
 food_budget = Budget("food")
